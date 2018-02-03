@@ -1,0 +1,11 @@
+.tab{
+	display: flex;
+	align-items: center;
+}
+.tab li{
+	flex: 1;
+	list-style: none;
+}
+.tab-active{
+	color: green;
+}

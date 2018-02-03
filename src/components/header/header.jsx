@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-
+import './header.css'
 
 class Header extends Component {
   render() {
     return (
-      <div>
-        这里是头部
+      <div className="header">
+      	<img className="logo" alt="logo" src={require("./logo.png")} />
       </div>
     );
   }
