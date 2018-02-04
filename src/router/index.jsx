@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Router,Route} from 'react-router-dom'
-import Home from '../containers/home/home'
-import Recommend from '../containers/recommend/recommend'
+import App from '../App'
+import New from '../containers/new/new'
 import Singer from '../containers/singer/singer'
 import Rank from '../containers/rank/rank'
 import Hot from '../containers/hot/hot'
@@ -13,12 +13,17 @@ class ROUTER  extends Component {
       <div className="router">
         <Router history={history}>
           <div>
-            <Home>
-              <Route exact path="/" component={Recommend}/>
+            <App>
+              {/*<ul>*/}
+                {/*<li><Link to="/">newsong</Link></li>*/}
+                {/*<li><Link to="/rank/11">rank</Link></li>*/}
+                {/*<li><Link to="/rankInfo/11">info</Link></li>*/}
+              {/*</ul>*/}
+              <Route exact path="/" component={New}/>
               <Route path="/singer" component={Singer}/>
               <Route path="/rank" component={Rank}/>
               <Route path="/hot" component={Hot}/>
-            </Home>
+            </App>
           </div>
         </Router>
       </div>

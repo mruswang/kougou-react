@@ -2,10 +2,21 @@
 	display: flex;
 	align-items: center;
 }
-.tab li{
+.tab a{
 	flex: 1;
-	list-style: none;
+	text-decoration: none;
+	text-align: center;
+	padding: 10px 0;
+	color: #333;
 }
-.tab-active{
-	color: green;
+.tab .tab-active{
+	color: #169af3;
+}
+.tab-active:after{
+	content: '';
+	background-color: #169af3;
+	height: 2px;
+	display: block;
+	position: relative;
+	top:8px;
 }
