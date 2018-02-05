@@ -5,10 +5,15 @@
   "dependencies": {
     "antd": "^3.1.6",
     "axios": "^0.17.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.0"
+    "react-scripts": "1.1.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -18,26 +23,33 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.6.3",
-    "react-app-rewired": "^1.4.1"
+    "react-app-rewired": "^1.4.1",
+    "redux-logger": "^3.0.6"
   },
   "proxy": {
-    "/proxy/":{
+    "/proxy/": {
       "target": "http://m.kugou.com",
       "secure": false,
       "changeOrigin": true,
-      "pathRewrite": {"^/proxy" : ""}
+      "pathRewrite": {
+        "^/proxy": ""
+      }
     },
     "/sproxy/": {
       "target": "http://mobilecdn.kugou.com/api/v3",
       "secure": false,
       "changeOrigin": true,
-      "pathRewrite": {"^/sproxy": ""}
+      "pathRewrite": {
+        "^/sproxy": ""
+      }
     },
     "/dproxy/": {
       "target": "http://www.kugou.com",
       "secure": false,
       "changeOrigin": true,
-      "pathRewrite": {"^/dproxy": ""}
+      "pathRewrite": {
+        "^/dproxy": ""
+      }
     }
   }
 }

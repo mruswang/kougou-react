@@ -1,0 +1,41 @@
+.player{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgba(0,0,0,0.8);
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	.p-left{
+		display: flex;
+		align-items: center;
+		color: #fff;
+		div{
+			margin-left: 8px;
+			span{
+				display: block;
+			}
+			.name{
+				font-size: 1rem
+			}
+			.author{
+				font-size: 0.65rem;
+			}
+		}
+	}
+	.p-right{
+		color: #fff;
+		i{
+			margin: 0 8px;
+			font-size: 1rem
+		}
+	}
+}
+.player.show{
+	display: flex;
+}
+.player.hide{
+	display: none;
+}

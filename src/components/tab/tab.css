@@ -1,6 +1,7 @@
 .tab{
 	display: flex;
 	align-items: center;
+	background-color: #fff;
 }
 .tab a{
 	flex: 1;
@@ -8,15 +9,19 @@
 	text-align: center;
 	padding: 10px 0;
 	color: #333;
+	position: relative;
 }
 .tab .tab-active{
 	color: #169af3;
 }
 .tab-active:after{
-	content: '';
-	background-color: #169af3;
-	height: 2px;
 	display: block;
-	position: relative;
-	top:8px;
+	bottom:0;
+	left: 0;
+	content: " ";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  border-bottom: 3px solid #169af3;
+  z-index: 2;
 }

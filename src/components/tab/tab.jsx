@@ -14,7 +14,7 @@ class Tab extends Component {
   constructor(){
     super();
     this.state = {
-      path: '/'
+      path: window.location.pathname
     }
   }
   select(item){

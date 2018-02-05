@@ -10,23 +10,21 @@ import history from '../history'
 class ROUTER  extends Component {
   render() {
     return (
-      <div className="router">
-        <Router history={history}>
-          <div>
-            <App>
-              {/*<ul>*/}
-                {/*<li><Link to="/">newsong</Link></li>*/}
-                {/*<li><Link to="/rank/11">rank</Link></li>*/}
-                {/*<li><Link to="/rankInfo/11">info</Link></li>*/}
-              {/*</ul>*/}
-              <Route exact path="/" component={New}/>
-              <Route path="/singer" component={Singer}/>
-              <Route path="/rank" component={Rank}/>
-              <Route path="/hot" component={Hot}/>
-            </App>
-          </div>
-        </Router>
-      </div>
+      <Router history={history}>
+        <div>
+          <App>
+            {/*<ul>*/}
+              {/*<li><Link to="/">newsong</Link></li>*/}
+              {/*<li><Link to="/rank/11">rank</Link></li>*/}
+              {/*<li><Link to="/rankInfo/11">info</Link></li>*/}
+            {/*</ul>*/}
+            <Route exact path="/" component={New}/>
+            <Route path="/singer" component={Singer}/>
+            <Route path="/rank" component={Rank}/>
+            <Route path="/hot" component={Hot}/>
+          </App>
+        </div>
+      </Router>
     );
   }
 }
