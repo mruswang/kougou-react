@@ -56,13 +56,16 @@ class New extends Component {
   handleClick(item){
     console.log(item);
     //将信息储存到redux中
-    this.props.setPlayer.setPlayer({
-      show: true
+    this.props.setPlayer.updata({
+      player: {
+        show: true
+      }
     })
   }
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return {
     show: state.tab_player.player.show
   }
