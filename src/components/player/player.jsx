@@ -1,41 +1,30 @@
 import React, { Component } from 'react';
 import {Icon} from 'antd'
 import './player.css'
-import { connect } from 'react-redux'
+import WrappedComponent from '../../hoc/index'
 
 class Player extends Component {
-  constructor(props){
-    super(props);
-  }
   render() {
     return (
-      <div className={this.props.show ? 'show player': 'hide player'}>
+      <div className={this.props.smallScreen ? 'show player': 'hide player'}>
+        <audio src={this.props.singer.playUrl} id="audioPlayer" onEnded={this.props.nextSong}  autoPlay className="audioPlayer"></audio>
         <div className="p-left">
-          <img width="80" src="http://singerimg.kugou.com/uploadpic/softhead/200/20171115/20171115185314769.jpg" alt=""/>
+          <img width="80" onClick={this.props.toDtails.bind(this,true)} src={this.props.singer.imgurl} alt=""/>
           <div>
-            <span className="name">在无风的时光遇见你</span>
-            <span className="author">五音Jw</span>
+            <span className="name">{this.props.singer.songName}</span>
+            <span className="author">{this.props.singer.authorName}</span>
           </div>
         </div>
         <div className="p-right">
-          <Icon type="step-backward" />
-          <Icon type="pause" />
-          <Icon type="step-forward" />
+          <Icon type="step-backward" onClick={this.props.prevSong}/>
+          <Icon type={this.props.playing ? "pause" : "caret-right" }   onClick={this.props.playState} />
+          <Icon type="step-forward" onClick={this.props.nextSong} />
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    show: state.tab_player.player.show
-  }
-}
-function mapDispathToProps(dispath) {
-  return {}
-}
-export default connect(
-    mapStateToProps,
-    mapDispathToProps
-)(Player)
+Player = WrappedComponent(Player);
+export default Player
+

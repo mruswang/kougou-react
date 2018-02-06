@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Carousel,List,Icon } from 'antd';
 import './new.css'
 import $http from '../../axios'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import * as userInfoActionsFromOtherFile from '../../redux/action'
+import WrappedComponent from '../../hoc/index'
 
 let that;
 const Item = List.Item;
@@ -17,7 +15,6 @@ class New extends Component {
       songList: []
     }
     $http.get('/proxy/?json=true').then(res => {
-      console.log(this.props)
       that.setState({
         bannerList : res.data.banner,
         songList: res.data.data
@@ -34,7 +31,7 @@ class New extends Component {
       />
     )) 
     let songList = this.state.songList.map((item,index) => (
-      <Item onClick={this.handleClick.bind(this,item)} className="list-item" key={index}>
+      <Item onClick={this.props.play.bind(this,this.state.songList,item.hash,index)} className="list-item" key={index}>
         <div className="list-item-left">
           <h4>{item.remark}</h4>
           <span>{item.filename}</span>
@@ -47,35 +44,13 @@ class New extends Component {
         <Carousel autoplay>
           {carousel}
         </Carousel>
-        <List className={this.props.show ? 'show': 'hide'}>
+        <List className={this.props.fullScreen ? 'show': 'hide'}>
           {songList}
         </List>
       </div>
     );
   }
-  handleClick(item){
-    console.log(item);
-    //将信息储存到redux中
-    this.props.setPlayer.updata({
-      player: {
-        show: true
-      }
-    })
-  }
 }
 
-function mapStateToProps(state) {
-  console.log(state)
-  return {
-    show: state.tab_player.player.show
-  }
-}
-function mapDispathToProps(dispath) {
-  return {
-    setPlayer: bindActionCreators(userInfoActionsFromOtherFile,dispath)
-  }
-}
-export default connect(
-    mapStateToProps,
-    mapDispathToProps
-)(New)
+New = WrappedComponent(New);
+export default New

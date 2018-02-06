@@ -3,6 +3,9 @@
 	align-items: center;
 	background-color: #fff;
 }
+.tabhide{
+	display: none;
+}
 .tab a{
 	flex: 1;
 	text-decoration: none;

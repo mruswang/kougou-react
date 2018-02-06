@@ -1,8 +1,10 @@
 const initState = {
-  player: {
-  	show: false
-  },
-    currentindex: 0
+  singer: {},
+  playing: false,
+  fullScreen: false,
+  smallScreen:false,
+  playlist: [],
+  currentIndex: -1
 }
 
 export default initState
