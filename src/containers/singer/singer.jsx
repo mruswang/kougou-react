@@ -2,12 +2,15 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {Icon} from 'antd'
 import './singer.css'
+import WrappedComponent from '../../hoc/index'
+import Tab from '../../components/tab/tab'
 
 class Singer extends React.Component{
   render(){
     return (
       <div>
-        <div className="singer-type">
+        <Tab></Tab>
+        <div className={this.props.smallScreen ? 'singer-type mbh': 'singer-type mbn'}>
           <div className="singer-group">
             <Link to={'/singerlist/88'}><span>热门歌手</span> <Icon className="icon" type="right"/></Link>
           </div>
@@ -31,4 +34,5 @@ class Singer extends React.Component{
     )
   }
 }
+Singer = WrappedComponent(Singer);
 export default Singer

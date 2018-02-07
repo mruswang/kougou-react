@@ -16,7 +16,6 @@ class Tab extends Component {
     this.state = {
       path: window.location.pathname
     }
-    console.log(this.props)
   }
   select(item){
     this.setState({
@@ -28,7 +27,7 @@ class Tab extends Component {
         <Link to={item.href} key={index} onClick={this.select.bind(this,item)} className={this.state.path === item.href ? 'tab-active' : ''}> {item.title} </Link>
     ))
     return (
-      <div className={this.props.fullScreen ? 'tab tabhide' : 'tab'}>
+      <div className={this.props.fullScreen ? ' tabhide' : 'tab'}>
         {links}
       </div>
     );

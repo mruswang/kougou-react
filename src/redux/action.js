@@ -27,3 +27,10 @@ export function changeFull(data) {
         data
     }
 }
+
+export function small(data) {
+    return {
+        type: actionTypes.SET_SMALL,
+        data
+    }
+}

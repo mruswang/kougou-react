@@ -3,6 +3,7 @@ import { Carousel,List,Icon } from 'antd';
 import './new.css'
 import $http from '../../axios'
 import WrappedComponent from '../../hoc/index'
+import Tab from '../../components/tab/tab'
 
 let that;
 const Item = List.Item;
@@ -41,10 +42,11 @@ class New extends Component {
     ))
     return (
       <div className="new">
+        <Tab></Tab>
         <Carousel autoplay>
           {carousel}
         </Carousel>
-        <List className={this.props.fullScreen ? 'show': 'hide'}>
+        <List className={this.props.smallScreen ? 'mbh': 'mbn'}>
           {songList}
         </List>
       </div>

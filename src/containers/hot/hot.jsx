@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { List,Icon } from 'antd';
 import $http from '../../axios'
 import './hot.css'
+import WrappedComponent from '../../hoc/index'
+import Tab from '../../components/tab/tab'
+
 let that;
 const Item = List.Item;
 class Hot extends Component {
@@ -32,11 +35,15 @@ class Hot extends Component {
       </Item>
     ))
     return (
-      <List className="hot">
-        {HotList}
-      </List>
+      <div>
+        <Tab></Tab>
+        <List className={this.props.smallScreen ? 'hot mbh': 'hot mbn'}>
+          {HotList}
+        </List>
+      </div>
     );
   }
 }
 
-export default Hot;
+Hot = WrappedComponent(Hot);
+export default Hot

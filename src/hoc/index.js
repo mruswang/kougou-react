@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as playerAction from '../redux/action'
 import $http from '../axios'
-import history from '../history'
 
 export default (WrappedComponent) => {
     class NewComponent extends Component {
@@ -22,18 +21,21 @@ export default (WrappedComponent) => {
                 //将信息储存到redux中
                 let data = res.data.data
                 this.props.changePlayer.updata({
-                    smallScreen: true,
                     singer:{
                         imgurl: data.img,
                         playUrl: data.play_url,
                         songName: data.song_name,
-                        authorName: data.author_name
+                        authorName: data.author_name,
+                        lyrics: data.lyrics,
+                        currentLength: 0,
+                        songLength: data.timelength / 1000
                     }
                 })
                 this.props.changePlayer.playState({playing:true})
+                this.props.changePlayer.small({smallScreen: true})
             })
         }
-        prevSong(e){
+        prevSong(e,type){
             if(e){
                 e.stopPropagation();
             }
@@ -58,7 +60,7 @@ export default (WrappedComponent) => {
                 this.props.changePlayer.playState({playing:player})
             }
         }
-        nextSong(e){
+        nextSong(e,type){
             if(e){
                 e.stopPropagation();
             }
@@ -72,13 +74,30 @@ export default (WrappedComponent) => {
 
         }
         toDtails(text){
-            history.push('/player-details')
+            // history.push('/player-details')
             this.props.changePlayer.changeFull({fullScreen:text})
             this.props.changePlayer.updata({smallScreen: false})
         }
+        timeUpdate(params,value){
+            var time;
+            if(params === true){
+                //手动设置播放时间
+                time = value;
+                document.getElementById('audioPlayer').currentTime = value;
+            }else{
+                time = document.getElementById('audioPlayer').currentTime;
+            }
+            var singer = {...this.props.singer}
+            singer.currentLength = time;
+            this.props.changePlayer.updata({singer:singer})
+        }
+        back(){
+            this.props.changePlayer.changeFull({fullScreen:false})
+            this.props.changePlayer.updata({smallScreen: true})
+        }
         render() {
             //prevSong={this.props.prevSong.bind(this)}
-            return <WrappedComponent {...this.props}  {...this.state} toDtails={this.toDtails.bind(this)}  play={this.setList.bind(this)} prevSong={this.prevSong.bind(this)} playState={this.playState.bind(this)} nextSong={this.nextSong.bind(this)}/>
+            return <WrappedComponent {...this.props}  {...this.state} toDtails={this.toDtails.bind(this)} back={this.back.bind(this)}  play={this.setList.bind(this)} prevSong={this.prevSong.bind(this)} playState={this.playState.bind(this)} nextSong={this.nextSong.bind(this)} change={this.timeUpdate.bind(this)}/>
         }
     }
     function mapStateToProps(state) {

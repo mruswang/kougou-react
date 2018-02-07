@@ -5,7 +5,6 @@ import New from '../containers/new/new'
 import Singer from '../containers/singer/singer'
 import Rank from '../containers/rank/rank'
 import Hot from '../containers/hot/hot'
-import PlayerDetails from '../components/player/playDetails'
 import history from '../history'
 
 class ROUTER  extends Component {
@@ -23,7 +22,6 @@ class ROUTER  extends Component {
             <Route path="/singer" component={Singer}/>
             <Route path="/rank" component={Rank}/>
             <Route path="/hot" component={Hot}/>
-            <Route path="/player-details" component={PlayerDetails}/>
           </App>
         </div>
       </Router>

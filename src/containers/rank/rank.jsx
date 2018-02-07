@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { List,Icon } from 'antd';
 import $http from '../../axios'
 import './rank.css'
+import WrappedComponent from '../../hoc/index'
+import Tab from '../../components/tab/tab'
+
 let that;
 const Item = List.Item;
 class Rank extends Component {
@@ -29,11 +32,16 @@ class Rank extends Component {
       </Item>
     ))
     return (
-      <List className="rank">
-        {rankList}
-      </List>
+      <div>
+        <Tab></Tab>
+        <List className={this.props.smallScreen ? 'rank mbh': 'rank mbn'}>
+          {rankList}
+        </List>
+      </div>
+      
     );
   }
 }
 
-export default Rank;
+Rank = WrappedComponent(Rank);
+export default Rank
