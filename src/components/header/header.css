@@ -5,8 +5,16 @@
 	width: 100%;
 	top:0;
 	left: 0;
-	z-index: 10;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
 }
 .logo{
 	width: 6rem;
+}
+.header i{
+	font-size: 20px;
+	color: #fff;
 }

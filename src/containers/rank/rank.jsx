@@ -4,6 +4,7 @@ import $http from '../../axios'
 import './rank.css'
 import WrappedComponent from '../../hoc/index'
 import Tab from '../../components/tab/tab'
+import {Link} from 'react-router-dom'
 
 let that;
 const Item = List.Item;
@@ -23,13 +24,15 @@ class Rank extends Component {
   }
   render() {
   	let rankList = this.state.rankList.map((item,index) => (
-      <Item className="list-item" key={index}>
-        <div className="list-item-left">
-          <img width='80' src={item.imgurl.replace('{size}', '400')} alt={item.rankname} />
-          <span className="rankname">{item.rankname}</span>
-        </div>
-        <Icon type="right" />
-      </Item>
+      <Link to={'/rank-list/' + item.rankid } key={index}>
+        <Item className="list-item">
+          <div className="list-item-left">
+            <img width='80' src={item.imgurl.replace('{size}', '400')} alt={item.rankname} />
+            <span className="rankname">{item.rankname}</span>
+          </div>
+          <Icon type="right" />
+        </Item>
+      </Link>
     ))
     return (
       <div>
